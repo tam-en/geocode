@@ -1,0 +1,21 @@
+<h1><%=traveler.firstname%> <%=traveler.lastname%></h1>
+
+<h4><a href="/">go to search page</a></h4>
+<h4><a href="/travelers">go to travelers page</a></h4>
+
+<h3><%=traveler.firstname%> <%=traveler.lastname%> has been to these places:</h3>
+<ul>
+	<% traveler.cities.forEach(function(city){ %>
+		<li><%=city.name%>, <%=city.state%> 
+			<form method="POST" action="/association/?_method=DELETE">
+			    <input hidden type="text" name="travelerId" value="<%= traveler.id %>">
+			    <input hidden type="text" name="cityId" value="<%= city.id %>">
+			    <button type="submit">remove this city from <%=traveler.firstname%>'s list</button>
+        </form>
+
+		</li>
+
+	<% })%>
+</ul>
+
+<% include ./map.ejs %>

@@ -1,0 +1,21 @@
+<h1>favorite cities</h1>
+<h4><a href="/">go to search page</a></h4>
+<h4><a href="/travelers">go to travelers page</a></h4>
+
+
+<ul>
+	<% favoriteCities.forEach(function(city){ %>
+		
+		<li><%= city.name %>, <%= city.state %>: (<%= city.lat %>, <%= city.long %>)
+		<form method="POST" action="/favorites/<%= city.id%>/?_method=DELETE">
+		    <input hidden type="text" name="id" value="<%= city.id %>">
+		    <button type="submit">delete city from favorites list</button>
+        </form>
+		</li>
+		<br>
+		
+	<% }) %>
+</ul>
+
+<% include ./map.ejs %>
+

@@ -1,0 +1,17 @@
+<h1>city-search page</h1>
+<h4><a href="/favorites">go to favorites page</a></h4>
+<h4><a href="/travelers">go to travelers page</a></h4>
+
+<form method="GET" action="/results">
+	<label name="city">city:</label>
+	<input type="text" name="city">
+	<label name="state">state: </label>
+	<input type="text" name="state">
+	<select name="travelerId">
+		<% travelers.forEach(function(traveler) {%>
+			<option value="<%= traveler.id %>"><%=traveler.firstname %> <%=traveler.lastname%></option>
+		<%})%>
+	</select>
+	<input type="submit" value="Search">
+</form>
+

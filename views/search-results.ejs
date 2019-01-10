@@ -1,0 +1,16 @@
+<h1>Results for '<%= searchTerms.city %>, <%= searchTerms.state %>'</h1>
+<h4><a href="/">search again</a></h4>
+<ul>
+	<% results.forEach(function(city){ %>
+		<li><%= city.city %>, <%= city.state %>: (<%= city.lat %>, <%= city.long %>)
+			<form method="POST" action="/add">
+				<input type="hidden" name="city" value="<%= city.city %>">
+				<input type="hidden" name="state" value="<%= city.state %>">
+				<input type="hidden" name="lat" value="<%= city.lat %>">
+				<input type="hidden" name="long" value="<%= city.long %>">
+				<input type="hidden" name="travelerId" value="<%= searchTerms.travelerId %>">
+				<input type="submit" value="add to favorites">
+			</form> 
+		</li>
+	<% }) %>
+</ul>

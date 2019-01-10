@@ -1,0 +1,33 @@
+<h1>travelers</h1>
+
+<h4><a href="/favorites">go to favorites page</a></h4>
+<h4><a href="/">go to city search page</a></h4>
+
+
+<h4>add a traveler</h4>
+
+<form method="POST" action="/travelers">
+	<label name="firstname">first name:</label>
+	<input type="text" name="firstname">
+	<label name="lastname">last name: </label>
+	<input type="text" name="lastname">
+	<input type="submit" value="submit">
+</form>
+
+<br>
+<h4>list of travelers</h4>
+
+<ul>
+	<% traveler.forEach(function(traveler){ %>
+		<li><%= traveler.firstname %> <%= traveler.lastname %>
+		<form method="POST" action="/traveler/<%= traveler.id%>/?_method=DELETE">
+		    <input hidden type="text" name="id" value="<%= traveler.id %>">
+		    <button type="submit">delete this traveler</button>
+        </form>
+        <form method="GET" action="/traveler/<%= traveler.id %>">
+		    <button type="submit">see where this traveler has been</button>
+        </form>
+		</li>
+		<br>
+	<% }) %>
+</ul>
